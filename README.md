@@ -15,3 +15,24 @@ pip install -r requirements.txt
 ```
 
 2. Run the `data_insight.ipynb`
+
+
+## Model training and validation
+The scripts contained in the `scripts` contain the necessary code to train, validate and run the inference of the selected model.
+It uses the local module `cvprogressivemirrordetection` containing the project-specific source code.
+
+1. Install the `cvprogressivemirrordetection` module
+```console
+pip install .
+```
+
+2. Train the model
+```console
+python ./scripts/train.py
+```
+The scripts saves the model and the train/test metrics in the `output` folder.
+
+3. Validate the model on new data
+```console
+python ./scripts/validation.py --file-path ./data/new_validation_data
+```

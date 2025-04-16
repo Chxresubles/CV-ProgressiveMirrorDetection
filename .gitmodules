@@ -1,0 +1,3 @@
+[submodule "cvprogressivemirrordetection/sub/SAM2_UNet"]
+	path = cvprogressivemirrordetection/sub/SAM2_UNet
+	url = https://github.com/WZH0120/SAM2-UNet.git

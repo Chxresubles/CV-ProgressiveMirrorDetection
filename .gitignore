@@ -1,7 +1,7 @@
 # Project specific folders
 output
 data
-catboost_info
+pretrained_weights
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
