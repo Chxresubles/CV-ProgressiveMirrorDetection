@@ -8,7 +8,9 @@ from cvprogressivemirrordetection.dataset import PMDDataset
 from cvprogressivemirrordetection.constants import MEAN, STD, IMAGE_RESIZE
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Evaluate Progressive Mirror Detection model")
+    parser = argparse.ArgumentParser(
+        description="Evaluate Progressive Mirror Detection model"
+    )
     parser.add_argument(
         "--data-path",
         type=str,
@@ -33,7 +35,9 @@ if __name__ == "__main__":
             v2.Normalize(mean=MEAN, std=STD),
         ]
     )
-    validation_dataset = PMDDataset(Path(args.data_path), transform=validation_transform)
+    validation_dataset = PMDDataset(
+        Path(args.data_path), transform=validation_transform
+    )
     print(f"Validation dataset contains {len(validation_dataset)} images")
 
     validator = ModelTrainer(model)

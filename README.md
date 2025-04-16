@@ -36,3 +36,23 @@ The scripts saves the model and the train/test metrics in the `output` folder.
 ```console
 python ./scripts/validation.py --file-path ./data/new_validation_data
 ```
+
+
+## Deploy API
+
+### Run locally
+
+1. Install the `cvprogressivemirrordetection` module
+```console
+pip install .
+```
+
+2. Deploy the API
+```console
+python ./scripts/score.py
+```
+
+3. Send a test request to the API.
+```console
+python ./scripts/test_api.py
+```

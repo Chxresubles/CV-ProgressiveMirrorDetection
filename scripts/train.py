@@ -82,7 +82,9 @@ if __name__ == "__main__":
         ]
     )
 
-    train_dataset = PMDDataset(Path(args.data_path) / "train", transform=train_transform)
+    train_dataset = PMDDataset(
+        Path(args.data_path) / "train", transform=train_transform
+    )
     print(f"Train dataset contains {len(train_dataset)} images")
     test_dataset = PMDDataset(Path(args.data_path) / "test", transform=test_transform)
     print(f"Test dataset contains {len(test_dataset)} images")
