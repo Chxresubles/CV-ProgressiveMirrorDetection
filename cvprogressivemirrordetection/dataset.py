@@ -30,7 +30,6 @@ class PMDDataset(Dataset):
                         )
                     ]
                 )
-        self.images = self.images[:50]
 
     def __len__(self) -> int:
         return len(self.images)

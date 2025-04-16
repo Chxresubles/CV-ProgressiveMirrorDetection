@@ -1,8 +1,8 @@
 import os
 import json
+import pickle
 import argparse
 from pathlib import Path
-import torch
 from torchvision.transforms import v2
 from cvprogressivemirrordetection.trainer import ModelTrainer
 from cvprogressivemirrordetection.dataset import PMDDataset
@@ -97,7 +97,7 @@ if __name__ == "__main__":
     out_path.mkdir(parents=True, exist_ok=True)
 
     with open(out_path / "model.pkl", "wb") as f:
-        torch.save(model.state_dict(), f)
+        pickle.dump(model, f)
 
     with open(out_path / "train_metrics.json", "w") as f:
         json.dump(train_metrics, f, indent=2)
