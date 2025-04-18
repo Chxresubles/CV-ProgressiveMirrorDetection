@@ -1,5 +1,7 @@
 FROM python:3.12-slim AS builder
 
+ARG cpu_only=0
+
 ENV PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /app
@@ -7,7 +9,11 @@ WORKDIR /app
 COPY pyproject.toml .
 COPY ./cvprogressivemirrordetection ./cvprogressivemirrordetection
 
-RUN pip install --no-cache-dir --no-compile . --extra-index-url https://download.pytorch.org/whl/cpu
+RUN if [ "$cpu_only" = 1 ]; then \
+        pip install --no-cache-dir --no-compile . --extra-index-url https://download.pytorch.org/whl/cpu; \
+    else \
+        pip install --no-cache-dir --no-compile .; \
+    fi
 
 FROM python:3.12-slim AS runtime
 

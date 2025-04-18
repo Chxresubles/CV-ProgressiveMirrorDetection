@@ -65,11 +65,21 @@ The `Dockerfile` contains a minimal environment to deploy an API on port 8000.
 docker build . -t cvprogressivemirrordetection-api
 ```
 
+You can set the argument `cpu_only` to 0 or 1 to build the Docker image using pytorch on the CPU only. By default, `cpu_only` is set to 0 and PyTorch will only be installed with CUDA if an NVIDIA GPU is available.
+```console
+docker build . -t cvprogressivemirrordetection-api --build-arg cpu_only=1
+```
+
 2. Run the Docker image locally
 ```console
 docker run --rm -p 8000:8000 cvprogressivemirrordetection-api
 ```
 You can also use the `-d` option to run the Docker image in the background.
+
+If the machine you are using contains an NVIDIA GPU, use the following command to use CUDA to run the inference of the model
+```console
+docker run --gpus all --rm -p 8000:8000 cvprogressivemirrordetection-api
+```
 
 3. Send a test request to the API.
 ```console
