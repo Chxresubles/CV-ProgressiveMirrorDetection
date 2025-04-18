@@ -10,9 +10,8 @@ from cvprogressivemirrordetection.constants import EPSILON
 class ModelTrainer:
     def __init__(self, model: nn.Module) -> None:
         self.model = model
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        print(f"Loading tensors on {device}")
-        self.device = torch.device(device)
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        print(f"Loading tensors on {self.device.type}")
 
     def compute_loss(self, pred_masks: Tensor, gt_masks: Tensor) -> Tensor:
         weit = 1 + 5 * torch.abs(

@@ -56,3 +56,22 @@ python ./scripts/score.py
 ```console
 python ./scripts/test_api.py
 ```
+
+### Using Docker
+The `Dockerfile` contains a minimal environment to deploy an API on port 8000.
+
+1. Build the `Dockerfile`
+```console
+docker build . -t cvprogressivemirrordetection-api
+```
+
+2. Run the Docker image locally
+```console
+docker run --rm -p 8000:8000 cvprogressivemirrordetection-api
+```
+You can also use the `-d` option to run the Docker image in the background.
+
+3. Send a test request to the API.
+```console
+python ./scripts/test_api.py
+```

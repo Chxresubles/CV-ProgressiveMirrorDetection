@@ -87,7 +87,9 @@ class SAM2UNet(nn.Module):
     def __init__(self, weights_path: Optional[str] = None) -> None:
         super().__init__()
         # Load SAM2-UNet
-        self.sam2unet = SAM2UNetBase(weights_path)
+        self.sam2unet = SAM2UNetBase()
+        if weights_path:
+            self.sam2unet.load_state_dict(torch.load(weights_path), strict=True)
 
     def forward(self, x: Tensor) -> Tensor:
         # Get model output

@@ -40,7 +40,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--weights-path",
         type=str,
-        default="./pretrained_models",
+        default="./pretrained_weights/SAM2UNet-PMD.pth",
         help="Path to pretrained model weights folder",
     )
     args = parser.parse_args()
@@ -54,9 +54,9 @@ if __name__ == "__main__":
     elif args.model == "LRASPP":
         model = LRASPP()
     elif args.model == "SAM2-UNet":
-        if os.path.isfile(os.path.join(args.weights_path, "SAM2UNet-PMD.pth")):
+        if os.path.isfile(args.weights_path):
             print("Using pretrained SAM2-UNet from weights file")
-            model = SAM2UNet(os.path.join(args.weights_path, "SAM2UNet-PMD.pth"))
+            model = SAM2UNet(args.weights_path)
         else:
             print("Training SAM2-UNet from scratch")
             model = SAM2UNet()
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     out_path.mkdir(parents=True, exist_ok=True)
 
     with open(out_path / "model.pkl", "wb") as f:
-        pickle.dump(model, f)
+        pickle.dump(model.to("cpu"), f)
 
     with open(out_path / "train_metrics.json", "w") as f:
         json.dump(train_metrics, f, indent=2)
